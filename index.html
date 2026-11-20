@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Keegan O'Connor, Trombone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE occasion, a young musician's calling card: warm, confident, not loud
+   IDEA a recital poster and printed concert program
+   PICTURE a large static brass trombone drawn across a vermilion stage band
+   COLOUR vermilion stage #c8381f, brass #e0a83a, white page, ink #1b1414; night #140e0e
+   TYPE Young Serif display + Instrument Sans text
+   LAYOUT laptop: name top-left over a full-width trombone band; program-style sections below. Phone: name, trombone, sections stacked */
+:root{color-scheme:light dark;--bg:light-dark(#ffffff,#140e0e);--ink:light-dark(#1b1414,#f4ecea);--soft:light-dark(#5e5452,#b9aeab);--line:light-dark(#e6dedc,#3a2e2d);--stage:light-dark(#c8381f,#8e2414);--stage2:light-dark(#a92c16,#6e1b0e);--brass:#e0a83a;--panel:light-dark(#fbf3ef,#1e1515);--accent:light-dark(#c8381f,#ff8a6e)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 "Instrument Sans",system-ui,sans-serif;overflow-x:clip}
+a{color:inherit}
+img{max-width:100%}
+.wrap{max-width:1240px;margin:0 auto}
+.band{padding-block:clamp(36px,5vw,80px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+h1,h2,h3{font-family:"Young Serif",Georgia,serif;font-weight:400;line-height:1.05;letter-spacing:-.02em;text-wrap:balance;margin:0}
+h2{font-size:clamp(30px,4vw,44px)}
+h3{font-size:22px}
+p{margin:0 0 1em;max-width:66ch}
+.sample{font-size:13px;color:var(--soft);margin-top:10px}
+
+nav{position:sticky;top:0;z-index:5;background:var(--stage);color:#fff}
+nav .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 24px;padding:12px max(5vw,16px)}
+nav .mark{font-family:"Young Serif",Georgia,serif;font-size:19px;text-decoration:none}
+nav ul{display:flex;flex-wrap:wrap;gap:4px 20px;list-style:none;margin:0;padding:0}
+nav ul a{text-decoration:none;font-weight:500;font-size:15px;padding:10px 0;display:inline-block;opacity:.9}
+nav ul a:hover,nav ul a:focus-visible{opacity:1;text-decoration:underline;text-underline-offset:5px}
+
+.hero{background:var(--stage);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{display:grid;gap:8px;padding:clamp(28px,4vw,56px) max(5vw,16px) 0}
+.hero h1{font-size:clamp(52px,9vw,124px)}
+.hero .sub{font-size:clamp(18px,2vw,22px);max-width:40ch;margin:10px 0 0;color:#ffe9e2}
+.hero .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid #fff}
+.btn.solid{background:#fff;color:#8e2414}
+.btn:focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+.horn{display:block;width:100%;height:clamp(200px,30vw,360px);margin-top:10px}
+.floor{height:26px;background:var(--stage2)}
+
+.about{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.about .lead{font-size:clamp(19px,2vw,22px);line-height:1.5}
+.facts{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px 24px}
+.facts dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 18px;margin:0}
+.facts dt{color:var(--soft);font-size:14px;padding-top:2px}
+.facts dd{margin:0;font-weight:500}
+
+.listen{background:var(--panel)}
+.tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px;margin-top:28px}
+.track{display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px;align-items:center;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:18px;text-decoration:none}
+.track:hover,.track:focus-visible{border-color:var(--accent)}
+.play{width:52px;height:52px;border-radius:50%;background:var(--stage);display:grid;place-items:center}
+.track b{display:block;font-weight:600}
+.track span{color:var(--soft);font-size:14px}
+
+.program{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px)}
+.rep{list-style:none;margin:22px 0 0;padding:0;border-top:2px solid var(--ink)}
+.rep li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.rep li i{font-style:normal;color:var(--soft);white-space:nowrap}
+.gigs{list-style:none;margin:22px 0 0;padding:0;border-top:2px solid var(--ink)}
+.gigs li{display:grid;grid-template-columns:5.5em minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.gigs .d{font-family:"Young Serif",Georgia,serif;font-size:20px;line-height:1.1;color:var(--accent);white-space:nowrap}
+.gigs .d small{display:block;font-family:"Instrument Sans",sans-serif;font-size:13px;color:var(--soft)}
+.gigs b{display:block;font-weight:600}
+.gigs span{color:var(--soft);font-size:15px}
+
+.contact{background:var(--stage);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:end}
+.contact p{color:#ffe9e2}
+.lines{display:grid;gap:10px;font-size:18px}
+.lines a{font-weight:600;text-underline-offset:4px;overflow-wrap:anywhere}
+.copy{margin-top:6px;justify-self:start;background:transparent;color:#fff;font:inherit;font-weight:600;font-size:15px;cursor:pointer}
+footer{background:var(--stage2);color:#ffd9cf;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;padding:18px max(5vw,16px)}
+
+@media(max-width:800px){.about,.program,.contact .wrap{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){nav ul{gap:0 16px}nav ul a{font-size:14px}.horn{height:190px}}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="mark" href="#top">Keegan O'Connor</a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#listen">Listen</a></li>
+      <li><a href="#program">Repertoire</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <h1>Keegan O'Connor</h1>
+    <p class="sub">Trombonist and music student at Butler University in Indianapolis, playing in orchestra, wind ensemble and jazz settings.</p>
+    <div class="cta">
+      <a class="btn solid" href="#listen">Hear him play</a>
+      <a class="btn" href="#contact">Book or get in touch</a>
+    </div>
+  </div>
+  <svg class="horn" viewBox="100 0 940 310" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Illustration of a brass trombone">
+    <defs>
+      <linearGradient id="flare" gradientUnits="userSpaceOnUse" x1="0" y1="23" x2="0" y2="207">
+        <stop offset="0" stop-color="#ffe7a3"/><stop offset=".45" stop-color="#dba236"/><stop offset="1" stop-color="#8a5d12"/>
+      </linearGradient>
+      <radialGradient id="mouth" cx=".7" cy=".5" r=".75">
+        <stop offset="0" stop-color="#3d2705"/><stop offset=".55" stop-color="#9c6a16"/><stop offset="1" stop-color="#f0c45c"/>
+      </radialGradient>
+      <g id="thick" fill="none" stroke-linecap="round">
+        <path d="M410 115 H975 A30 30 0 0 1 975 175 H770"/>
+        <path d="M770 175 C738 175 732 255 700 255"/>
+        <path d="M640 215 H215 A20 20 0 0 0 215 255 H640"/>
+      </g>
+      <g id="thin" fill="none" stroke-linecap="round">
+        <path d="M640 215 H800"/>
+        <path d="M640 255 H700"/>
+      </g>
+    </defs>
+    <ellipse cx="570" cy="292" rx="460" ry="9" fill="#000" opacity=".18"/>
+    <!-- tubing: base, shadow edge, highlight edge -->
+    <use href="#thin" stroke="#c48a22" stroke-width="9"/>
+    <use href="#thin" stroke="#fff0bd" stroke-width="2" transform="translate(0 -2.5)"/>
+    <use href="#thick" stroke="#8a5d12" stroke-width="15"/>
+    <use href="#thick" stroke="#d29a2e" stroke-width="12" transform="translate(0 -1)"/>
+    <use href="#thick" stroke="#ffe7a3" stroke-width="3" transform="translate(0 -4)"/>
+    <!-- braces and fittings -->
+    <rect x="501" y="115" width="8" height="100" rx="3" fill="#b07a1c"/>
+    <rect x="866" y="115" width="8" height="60" rx="3" fill="#b07a1c"/>
+    <rect x="324" y="211" width="12" height="48" rx="4" fill="#a87218"/>
+    <rect x="686" y="215" width="10" height="40" rx="3" fill="#a87218"/>
+    <rect x="634" y="205" width="12" height="20" rx="3" fill="#9c6a16"/>
+    <rect x="634" y="245" width="12" height="20" rx="3" fill="#9c6a16"/>
+    <rect x="740" y="205" width="22" height="20" rx="5" fill="#e3ad45" stroke="#8a5d12" stroke-width="1.5"/>
+    <rect x="200" y="258" width="16" height="7" rx="3" fill="#b07a1c"/>
+    <!-- mouthpiece -->
+    <path d="M800 209 L850 204 L850 226 L800 221 Z" fill="#d6a03a"/>
+    <path d="M802 210 L848 206" stroke="#fff0bd" stroke-width="1.5"/>
+    <rect x="850" y="197" width="10" height="36" rx="4" fill="#f1c35a" stroke="#8a5d12" stroke-width="1.5"/>
+    <!-- bell -->
+    <path d="M150 23 C250 40 330 100 420 107 L420 123 C330 130 250 190 150 207 Z" fill="url(#flare)"/>
+    <path d="M160 30 C250 47 330 102 418 109" fill="none" stroke="#fff3c9" stroke-width="3" opacity=".85"/>
+    <ellipse cx="150" cy="115" rx="24" ry="92" fill="url(#mouth)" stroke="#f3cd6a" stroke-width="5"/>
+    <path d="M136 40 Q128 115 136 190" fill="none" stroke="#fff3c9" stroke-width="2" opacity=".6"/>
+  </svg>
+  <div class="floor"></div>
+</header>
+
+<section class="band" id="about">
+  <div class="wrap about">
+    <div>
+      <h2>About Keegan</h2>
+      <p class="lead" style="margin-top:20px">Keegan is a trombonist studying music at Butler University. He loves the full range of what the instrument can do, from a big orchestral chorale to a lyrical solo line to the back row of a swinging big band.</p>
+      <p>He started playing in middle school band and hasn't put the horn down since. At Butler he performs with the school's ensembles, plays in chamber groups, and is available for gigs around Indianapolis: weddings, church services, pit orchestras and brass quintet work.</p>
+      <p class="sample">Sample text. Swap in Keegan's own story, teachers and goals.</p>
+    </div>
+    <aside class="facts" aria-label="Quick facts">
+      <dl>
+        <dt>Instrument</dt><dd>Tenor trombone</dd>
+        <dt>School</dt><dd>Butler University, Indianapolis</dd>
+        <dt>Studying</dt><dd>Music performance</dd>
+        <dt>Class of</dt><dd>2029</dd>
+        <dt>Available for</dt><dd>Weddings, services, pit, quintet, big band</dd>
+        <dt>Based in</dt><dd>Indianapolis, IN</dd>
+      </dl>
+      <p class="sample" style="margin-bottom:0">Degree and class year are placeholders.</p>
+    </aside>
+  </div>
+</section>
+
+<section class="band listen" id="listen">
+  <div class="wrap">
+    <h2>Listen</h2>
+    <div class="tracks">
+      <a class="track" href="https://www.youtube.com/" target="_blank" rel="noopener">
+        <span class="play" aria-hidden="true"><svg width="20" height="22" viewBox="0 0 20 22"><path d="M2 1 L19 11 L2 21 Z" fill="#fff"/></svg></span>
+        <span><b>Rimsky-Korsakov, Trombone Concerto</b><span>Mvt. I, studio recital</span></span>
+      </a>
+      <a class="track" href="https://www.youtube.com/" target="_blank" rel="noopener">
+        <span class="play" aria-hidden="true"><svg width="20" height="22" viewBox="0 0 20 22"><path d="M2 1 L19 11 L2 21 Z" fill="#fff"/></svg></span>
+        <span><b>Guilmant, Morceau Symphonique</b><span>Jury performance</span></span>
+      </a>
+      <a class="track" href="https://www.youtube.com/" target="_blank" rel="noopener">
+        <span class="play" aria-hidden="true"><svg width="20" height="22" viewBox="0 0 20 22"><path d="M2 1 L19 11 L2 21 Z" fill="#fff"/></svg></span>
+        <span><b>"Body and Soul"</b><span>Jazz combo, ballad feature</span></span>
+      </a>
+    </div>
+    <p class="sample">Sample recordings. Each card links out, so point them at Keegan's YouTube, SoundCloud or Drive videos.</p>
+  </div>
+</section>
+
+<section class="band" id="program">
+  <div class="wrap program">
+    <div>
+      <h2>Repertoire</h2>
+      <ul class="rep">
+        <li><span>Concerto for Trombone</span><i>Rimsky-Korsakov</i></li>
+        <li><span>Morceau Symphonique</span><i>Guilmant</i></li>
+        <li><span>Concertino, Op. 4</span><i>David</i></li>
+        <li><span>Cavatine, Op. 144</span><i>Saint-Saëns</i></li>
+        <li><span>Sonata for Trombone</span><i>Hindemith</i></li>
+        <li><span>Boléro, trombone solo</span><i>Ravel</i></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Performances</h2>
+      <ul class="gigs">
+        <li><span class="d">Dec 4<small>2026</small></span><span><b>Winter ensemble concert</b><span>Butler University, Indianapolis</span></span></li>
+        <li><span class="d">Feb 12<small>2027</small></span><span><b>Studio trombone recital</b><span>Butler University, Indianapolis</span></span></li>
+        <li><span class="d">Apr 18<small>2027</small></span><span><b>Spring jazz night</b><span>Indianapolis</span></span></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap"><p class="sample">Sample repertoire and dates. Replace with what Keegan has actually played and has coming up.</p></div>
+</section>
+
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Book Keegan</h2>
+      <p style="margin-top:16px">For gigs, lessons, sub work or collaborations, send a note with the date, location and what you need. He'll get back to you within a couple of days.</p>
+    </div>
+    <div class="lines">
+      <a href="mailto:keegan.oconnor@example.com" id="em">keegan.oconnor@example.com</a>
+      <a href="https://www.instagram.com/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.youtube.com/" target="_blank" rel="noopener">YouTube</a>
+      <button class="btn copy" id="copy" type="button">Copy email</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Keegan O'Connor</span>
+    <span>Contact details shown are placeholders.</span>
+  </div>
+</footer>
+
+<script>
+{
+  const b = document.getElementById('copy');
+  const e = document.getElementById('em');
+  b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(e.textContent.trim()); b.textContent = 'Copied'; }
+    catch (err) { b.textContent = e.textContent.trim(); }
+    setTimeout(() => { b.textContent = 'Copy email'; }, 2200);
+  });
+}
+</script>
+</body>
+</html>
